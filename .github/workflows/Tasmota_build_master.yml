@@ -15,6 +15,11 @@ concurrency:
   group: environment-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./Tasmota
+
 jobs:
   safeboot-images:
     runs-on: ubuntu-latest
@@ -76,12 +81,10 @@ jobs:
           ls ${{ github.workspace }}
       - name: Show Tasmota "release" version info
         run: |
-          #sed -i -e "s/TASMOTA_SHA_SHORT/TASMOTA_SHA_SHORT release-/g" ./tasmota/include/tasmota_version.h
           #cat ./Tasmota/tasmota/include/tasmota_version.h
-          grep "TASMOTA_VERSION" ./Tasmota/tasmota/include/tasmota_version.h 
+          grep --word-regexp "TASMOTA_VERSION" ./Tasmota/tasmota/include/tasmota_version.h 
       - name: Run PlatformIO
         run: |
-          cd ./Tasmota/tasmota
           platformio run -e ${{ matrix.variant }}
       - name: Upload safeboot firmware artifacts
         uses: actions/upload-artifact@v4
