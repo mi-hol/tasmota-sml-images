@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: |
           # Copy the Otello specific platformio settings to the correct location
-          ls ./Tasmota/tasmota/user_config_override.h
+          ls ./Tasmota/tasmota/*
           cp ./user_config_override.h ./Tasmota/tasmota/user_config_override.h
           ls ./Tasmota/tasmota/user_config_override.h
           pip install wheel
