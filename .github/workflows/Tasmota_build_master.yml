@@ -72,11 +72,11 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Show Tasmota "release" build info
+      - name: Show Tasmota "release" version info
         run: |
           #sed -i -e "s/TASMOTA_SHA_SHORT/TASMOTA_SHA_SHORT release-/g" ./tasmota/include/tasmota_version.h
           #cat ./Tasmota/tasmota/include/tasmota_version.h
-          grep ./Tasmota/tasmota/include/tasmota_version.h "TASMOTA_SHA_SHORT"
+          grep ./Tasmota/tasmota/include/tasmota_version.h "TASMOTA_VERSION"
       - name: Run PlatformIO
         run: platformio run -e ${{ matrix.variant }}
       - name: Upload safeboot firmware artifacts
