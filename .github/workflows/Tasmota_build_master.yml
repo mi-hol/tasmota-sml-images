@@ -41,9 +41,12 @@ jobs:
         with:
           #ref: master
           ref: main
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run:  ls ./platformio_override.ini
-
+      - run: |
+          echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          #ls ./platformio_override.ini
+      - name: List files in the repository
+        run: |
+            ls ${{ github.workspace }}
       - name: Checkout Tasmota repo
         uses: actions/checkout@v4
         with:
