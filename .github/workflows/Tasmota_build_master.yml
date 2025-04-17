@@ -63,7 +63,10 @@ jobs:
           pip install -U platformio
           # Copy the Otello specific platformio settings to the correct location
           #cp ./platformio_override_sample.ini ./platformio_override.ini
-          ls ./platformio_override.ini
+          #ls ./platformio_override.ini
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
       - name: Add "release" to footer
         run: |
           sed -i -e "s/TASMOTA_SHA_SHORT/TASMOTA_SHA_SHORT release-/g" ./tasmota/include/tasmota_version.h
