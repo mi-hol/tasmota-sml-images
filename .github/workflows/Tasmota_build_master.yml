@@ -61,6 +61,8 @@ jobs:
           ls ./Tasmota/tasmota/*
           cp ./user_config_override.h ./Tasmota/tasmota/user_config_override.h
           ls ./Tasmota/tasmota/user_config_override.h
+          cp ./user_config_override.h ./Tasmota/tasmota/user_config_override.h
+          ls ./Tasmota/tasmota/user_config_override.h
       - name: Install dependencies
         run: |
           pip install wheel
@@ -78,7 +80,9 @@ jobs:
           #cat ./Tasmota/tasmota/include/tasmota_version.h
           grep "TASMOTA_VERSION" ./Tasmota/tasmota/include/tasmota_version.h 
       - name: Run PlatformIO
-        run: platformio run -e ${{ matrix.variant }}
+        run: |
+          cd ./Tasmota/tasmota
+          platformio run -e ${{ matrix.variant }}
       - name: Upload safeboot firmware artifacts
         uses: actions/upload-artifact@v4
         with:
