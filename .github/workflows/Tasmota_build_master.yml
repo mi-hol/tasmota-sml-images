@@ -55,6 +55,7 @@ jobs:
             path: Tasmota
       - run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+          ls Tasmota/*
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
