@@ -15,10 +15,12 @@ concurrency:
   group: environment-${{ github.ref }}
   cancel-in-progress: true
 
+env: Tasmota_dir: "/Tasmota"  
 defaults:
   run:
     shell: bash
-    working-directory: ./Tasmota
+    working-directory: $Tasmota_dir
+run: mkdir $Tasmota_dir
 
 jobs:
   safeboot-images:
@@ -48,10 +50,9 @@ jobs:
         #  ref: main
       - run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-          #ls ./platformio_override.ini
       - name: List files in the repository
         run: |
-            ls ${{ github.workspace }}
+          ls ${{ github.workspace }}
       - name: Checkout Tasmota repo
         uses: actions/checkout@v4
         with:
