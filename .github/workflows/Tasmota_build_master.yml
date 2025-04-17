@@ -70,7 +70,7 @@ jobs:
   base-images:
     runs-on: ubuntu-latest
     #if: github.repository == 'arendst/Tasmota'
-    if: github.repository == '*/tasmota-sml-images'
+    #if: github.repository == '*/tasmota-sml-images'
     continue-on-error: true
     strategy:
       matrix:
