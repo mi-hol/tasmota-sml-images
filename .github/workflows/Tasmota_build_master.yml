@@ -15,8 +15,10 @@ concurrency:
   group: environment-${{ github.ref }}
   cancel-in-progress: true
 
-env: Tasmota_dir: "/Tasmota"  
-defaults:
+env:
+  Tasmota_dir: '/Tasmota'
+
+  defaults:
   run:
     shell: bash
     working-directory: $Tasmota_dir
