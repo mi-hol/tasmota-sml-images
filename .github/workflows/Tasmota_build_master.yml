@@ -38,7 +38,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: master
+          #ref: master
+          ref: main
+      - name: Checkout Tasmota repo
+        uses: actions/checkout@v4
+        with:
+            repository: 'arendst/Tasmota'
+            path: Tasmota
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
