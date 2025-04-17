@@ -19,7 +19,7 @@ jobs:
   safeboot-images:
     runs-on: ubuntu-latest
     #if: github.repository == 'arendst/Tasmota'
-    if: github.repository == '**/tasmota-sml-images'
+    #if: github.repository == '**/tasmota-sml-images'
     continue-on-error: true
     strategy:
       matrix:
@@ -41,6 +41,7 @@ jobs:
         with:
           #ref: master
           ref: main
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - name: Checkout Tasmota repo
         uses: actions/checkout@v4
         with:
