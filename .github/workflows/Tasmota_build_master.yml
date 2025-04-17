@@ -45,8 +45,8 @@ jobs:
           - tasmota32c6-safeboot
         #  - tasmota32c6ser-safeboot
     steps:
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - run: mkdir $Tasmota_dir
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
       - uses: actions/checkout@v4
         # Checkout multiple repos (nested)
