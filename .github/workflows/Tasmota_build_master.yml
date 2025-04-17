@@ -56,17 +56,18 @@ jobs:
       - run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
           ls Tasmota/*
+      - name: Install dependencies
+        run: |
+          # Copy the Otello specific platformio settings to the correct location
+          ls ./Tasmota/tasmota/user_config_override.h
+          cp ./user_config_override.h ./Tasmota/tasmota/user_config_override.h
+          ls ./Tasmota/tasmota/user_config_override.h
+          pip install wheel
+          pip install -U platformio
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          pip install wheel
-          pip install -U platformio
-          # Copy the Otello specific platformio settings to the correct location
-          #cp ./platformio_override_sample.ini ./platformio_override.ini
-          #ls ./platformio_override.ini
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
