@@ -18,13 +18,15 @@ concurrency:
 env:
   Tasmota_dir: '/Tasmota'
 
-  defaults:
+  
+defaults:
   run:
     shell: bash
     working-directory: $Tasmota_dir
-run: mkdir $Tasmota_dir
 
 jobs:
+  run: mkdir $Tasmota_dir
+
   safeboot-images:
     runs-on: ubuntu-latest
     #if: github.repository == 'arendst/Tasmota'
