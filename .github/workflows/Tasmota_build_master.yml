@@ -56,12 +56,13 @@ jobs:
       - run: |
           echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
           ls Tasmota/*
-      - name: Install dependencies
+      - name: Copy Otello project specific platformio settings to the correct location
         run: |
-          # Copy the Otello specific platformio settings to the correct location
           ls ./Tasmota/tasmota/*
           cp ./user_config_override.h ./Tasmota/tasmota/user_config_override.h
           ls ./Tasmota/tasmota/user_config_override.h
+      - name: Install dependencies
+        run: |
           pip install wheel
           pip install -U platformio
       - name: Set up Python
