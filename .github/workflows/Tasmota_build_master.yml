@@ -79,7 +79,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
     
-      - name: Copy Otello project specific platformio settings to the correct location
+      - name: Copy ottelo project specific platformio settings to the correct location
         run: |
           ls ./Tasmota/tasmota/*
           cp ./user_config_override.h ./Tasmota/tasmota/user_config_override.h
