@@ -44,6 +44,7 @@ jobs:
         uses: actions/checkout@v4
         with:
             repository: 'arendst/Tasmota'
+            ref: master
             path: Tasmota
       - name: Set up Python
         uses: actions/setup-python@v5
