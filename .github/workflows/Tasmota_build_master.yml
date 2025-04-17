@@ -76,7 +76,7 @@ jobs:
         run: |
           #sed -i -e "s/TASMOTA_SHA_SHORT/TASMOTA_SHA_SHORT release-/g" ./tasmota/include/tasmota_version.h
           #cat ./Tasmota/tasmota/include/tasmota_version.h
-          grep ./Tasmota/tasmota/include/tasmota_version.h "TASMOTA_VERSION"
+          grep "TASMOTA_VERSION" ./Tasmota/tasmota/include/tasmota_version.h 
       - name: Run PlatformIO
         run: platformio run -e ${{ matrix.variant }}
       - name: Upload safeboot firmware artifacts
