@@ -18,18 +18,25 @@ concurrency:
 env:
   Tasmota_dir: '/Tasmota'
 
-  
-defaults:
-  run:
-    shell: bash
-    working-directory: $Tasmota_dir
-
 jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create Tasmota_dir
+        run: mkdir $Tasmota_dir
+
   safeboot-images:
     runs-on: ubuntu-latest
     #if: github.repository == 'arendst/Tasmota'
     #if: github.repository == '**/tasmota-sml-images'
-    continue-on-error: true
+    continue-on-error: false
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: $Tasmota_dir
+    
+    
     strategy:
       matrix:
         variant:
@@ -45,7 +52,6 @@ jobs:
           - tasmota32c6-safeboot
         #  - tasmota32c6ser-safeboot
     steps:
-      - run: mkdir $Tasmota_dir
       - name: Checkout Tasmota repo
         uses: actions/checkout@v4
         with:
